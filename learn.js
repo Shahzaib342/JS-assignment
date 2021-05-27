@@ -67,7 +67,7 @@ let code_with_100_lines = function () {
 let qSyntax = function () {
     let object = {
         doSomething: code_with_100_lines,
-        desc: "doSomething function is performing basic sum operation and it is utilizing arithmetic operators"
+        desc: "doSomething function is creating a to do list"
     };
     return object;
 };
@@ -109,12 +109,23 @@ let getMap = function () {
     return map;
 }
 
+//return a prototype chain
+function prototypeChain() {
+    let obj = {};
+    getMap().forEach((value, key, map) => {
+        value = key == "Object.create() Method" ? value.__proto__ : value;
+        obj[key] = value;
+    });
+    return obj;
+}
+
 //Arrow function expression
 let qObj = () => {
     let obj = {
         createObjects: getMap(),
-        chain: {},
-        desc: "desc of arrow function"
+        chain: prototypeChain(),
+        desc: "createObjects is calling getMap() function that is creating a map containing my name and id object using 5 different methods and returning that" +
+            "map. chain is calling prototypeChain method that is creating a object and adding all 5 objects in this new object from getMap() method."
     }
     return obj;
 };
@@ -124,21 +135,21 @@ let qObj = () => {
 //3(c)
 function qCalc() {
     let object = new Object();
-    object.calculator = {};
-    object.desc = "Calculator";
-
-    object.calculator.add = function (num) {
-        calculator_value = calculator_value + num;
+    object.calcFactory = function () {
+      let calculator = new Object();
+        calculator.add = function (num) {
+            calculator_value = calculator_value + num;
+        }
+        calculator.sub = function (num) {
+            calculator_value = calculator_value - num;
+        }
+        calculator.getValue = function () {
+            return calculator_value;
+        }
+        return calculator;
     }
-
-    object.calculator.sub = function (num) {
-        calculator_value = calculator_value - num;
-    }
-
-    object.calculator.getValue = function () {
-        return calculator_value;
-    }
-
+    object.desc = "qCalc will return a object that consists of calcFactory. You can use calcFactory to add, subtract of get global calculator_value;" +
+        "To get calculator_value just use qCalc().calcFactory().getValue(), to add use qCalc().calcFactory().add(n) and to subtract use qCalc().calcFactory().sub(n)";
     return object;
 }
 
@@ -146,7 +157,6 @@ function qCalc() {
 
 //3(d)
 function qAsync() {
-    var value = 0;
     let object = new Object();
     object.doAsync = function (someThing, time) {
         return setTimeout(() => document.getElementById("async_value").innerHTML = someThing, time)
@@ -154,7 +164,8 @@ function qAsync() {
     object.exec = async function () {
         return object.doAsync("Hello Shoval Suissa", 11500)
     };
-    object.desc = "Desc";
+    object.desc = "doAsync function is receiving string and time parameter and returning setTimeout function that is using these parameters. exec function is executing setTimeout function from doAsync" +
+        "method by sending string and time parameters. Once time is completed setTimeout will print that string in span element of qAsync tab.";
     return object;
 }
 
