@@ -1,70 +1,117 @@
+
+
 //global variables
 let calculator_value = 0;
 
 //3 (a)
 class ToDoListClass {
+    "use strict";
 
-    newElement() { //create a new element using todo list and part of doSomething function
-        var li = document.createElement("li");
-        var inputValue = document.getElementById("myInput").value;
-        var t = document.createTextNode(inputValue);
-        li.appendChild(t);
-        if (inputValue === '') {
-            alert("You must write something!");
-        } else {
-            document.getElementById("myUL").appendChild(li);
-        }
-        document.getElementById("myInput").value = "";
-
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        li.appendChild(span);
-
-        for (let i = 0; i < close.length; i++) {
-            close[i].onclick = function () {
-                var div = this.parentElement;
-                div.style.display = "none";
+    newElement() {
+        //create a new element using todo list and part of doSomething function
+        try {
+            let li = document.createElement("li");
+            let inputValue = document.getElementById("myInput").value;
+            let t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                return false;
+            } else {
+                document.getElementById("myUL").appendChild(li);
             }
-        }
+            document.getElementById("myInput").value = "";
 
-        this.close();
-    }
-
-    close() { // Click on a close button to hide the current list item
-        var close = document.getElementsByClassName("close");
-        var i;
-        for (i = 0; i < close.length; i++) {
-            close[i].onclick = function () {
-                var div = this.parentElement;
-                div.style.display = "none";
-            }
-        }
-    }
-
-    closeButton() {  // Create a "close" button and append it to each list item
-        var myNodelist = document.getElementsByTagName("LI");
-        var i;
-        for (i = 0; i < myNodelist.length; i++) {
-            var span = document.createElement("SPAN");
-            var txt = document.createTextNode("\u00D7");
+            let span = document.createElement("SPAN");
+            let txt = document.createTextNode("\u00D7");
             span.className = "close";
             span.appendChild(txt);
-            myNodelist[i].appendChild(span);
+            li.appendChild(span);
+
+            for (let i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    let div = this.parentElement;
+                    div.style.display = "none";
+                }
+            }
+
+            this.close();
+            return true;
+        } catch (err) {
+            alert('There is some error occurred in setting up the todo list');
         }
     }
 
-    checkBoxSymbol() { // Add a "checked" symbol when clicking on a list item
-        var list = document.querySelector('ul');
-        list.addEventListener('click', function (ev) {
-            if (ev.target.tagName === 'LI') {
-                ev.target.classList.toggle('checked');
+     async createListElement() {
+        //method that is using promise to call and add a new item in to do list
+         try {
+             let that = this;
+             let promise = new Promise(function(resolve, reject) {
+                 if(that.newElement())
+                     setTimeout(() => resolve("New Item Added Successfully"), 1000);
+                 else
+                     reject("You must write something");
+             });
+
+             promise.then(
+                 result => alert(result),
+                 error => alert(error)
+             );
+         } catch (err) {
+             alert('There is some error occurred in setting up the todo list');
+         }
+    }
+
+    close() {
+        // Click on a close button to hide the current list item
+        try {
+            let close = document.getElementsByClassName("close");
+            let i;
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function () {
+                    let div = this.parentElement;
+                    div.style.display = "none";
+                }
             }
-        }, false);
+        } catch (err) {
+            alert('There is some error occurred in setting up the todo list');
+        }
+    }
+
+    closeButton() {
+        // Create a "close" button and append it to each list item
+        try {
+            let myNodelist = document.getElementsByTagName("LI");
+            let i;
+            for (let i = 0; i < myNodelist.length; i++) {
+                let span = document.createElement("SPAN");
+                let txt = document.createTextNode("\u00D7");
+                span.className = "close";
+                span.appendChild(txt);
+                myNodelist[i].appendChild(span);
+            }
+        } catch (err) {
+            alert('There is some error occurred in setting up the todo list');
+        }
+    }
+
+    checkBoxSymbol() {
+        // Add a "checked" symbol when clicking on a list item
+        try {
+            let list = document.querySelector('ul');
+            list.addEventListener('click', function (ev) {
+                if (ev.target.tagName === 'LI') {
+                    ev.target.classList.toggle('checked');
+                }
+            }, false);
+        } catch (err) {
+            alert('There is some error occurred in setting up the todo list');
+        }
     }
 }
+//class object
 let toDoList = new ToDoListClass();
+
+
 //functionality of doSomething function
 let code_with_100_lines = function () {
 // to do list
@@ -77,7 +124,7 @@ let code_with_100_lines = function () {
 let qSyntax = function () {
     let object = {
         doSomething: code_with_100_lines,
-        desc: "doSomething function is creating a to do list"
+        desc: "doSomething function is creating a to do list and it utilizes Class, use strict, variables, alert, comparison operators, conditions, functions,  loops, this keyword, try/catch, async, promise, setTimeout, DOM query selectors and basic Events."
     };
     return object;
 };
