@@ -27,6 +27,10 @@ function runasynch() {
 //add number on click of add button from qCalc tab
 function addNumber() {
     var value = document.getElementById("number").value;
+    if(value == "") {
+        alert("Please enter a valid number");
+        return false;
+    }
     qCalc().calcFactory().add(parseFloat(value));
     document.getElementById("total_value").innerHTML = qCalc().calcFactory().getValue();
 }
@@ -34,6 +38,10 @@ function addNumber() {
 //subtract number on click of add button from qCalc tab
 function subNumber() {
     var value = document.getElementById("number").value;
+    if(value == "") {
+        alert("Please enter a valid number");
+        return false;
+    }
     qCalc().calcFactory().sub(parseFloat(value));
     document.getElementById("total_value").innerHTML = qCalc().calcFactory().getValue();
 }
