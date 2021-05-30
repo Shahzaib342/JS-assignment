@@ -1,0 +1,121 @@
+
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.header.main-header {
+    padding: 5px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 12px;
+}
+
+.content {
+    padding: 20px;
+}
+
+/*
+navbar
+ */
+
+ul.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    top: 0;
+    width: 100%;
+}
+
+ul.nav-bar li {
+    float: left;
+}
+
+ul.nav-bar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.nav-bar li a:hover:not(.active) {
+    background-color: #111;
+}
+
+ul.nav-bar .active {
+    background-color: #04AA6D;
+}
+
+/**
+column
+ */
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*
+button
+ */
+button:active {
+    background-color: #1abc9c;
+}
+
+/*
+comparison table
+ */
+table.comparison-table {
+    width: 100%;
+}
+
+table.comparison-table, th, td {
+    border: 1px solid #333;
+    border-collapse: collapse;
+}
+
+table.comparison-table th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+
+#t01 tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+#t01 th {
+    background-color: #333;
+    color: white;
+}
+
+/*
+footer
+ */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}

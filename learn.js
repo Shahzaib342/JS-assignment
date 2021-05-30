@@ -80,7 +80,7 @@ class ToDoListClass {
     closeButton() {
         // Create a "close" button and append it to each list item
         try {
-            let myNodelist = document.getElementsByTagName("LI");
+            let myNodelist = document.getElementById("myUL").getElementsByTagName("li");
             let i;
             for (let i = 0; i < myNodelist.length; i++) {
                 let span = document.createElement("SPAN");
@@ -97,7 +97,8 @@ class ToDoListClass {
     checkBoxSymbol() {
         // Add a "checked" symbol when clicking on a list item
         try {
-            let list = document.querySelector('ul');
+            const theId = "myUL";
+            let list = document.querySelector(`#${theId}`);
             list.addEventListener('click', function (ev) {
                 if (ev.target.tagName === 'LI') {
                     ev.target.classList.toggle('checked');

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header main-header">
+    <h1>Web Development</h1>
+</div>
+
+<ul class="nav-bar">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="comparison.html">Frontend vs Backend</a></li>
+    <li><a href="test.html">My Web Work</a></li>
+    <li><a class="active" href="calculator.html">Calculator Assignment</a></li>
+</ul>
+
+<div class="content" style="width: 80%; margin: auto">
+    <h1>Calculator</h1>
+    <div class="row">
+        <div class="column" style="background-color:#888;border-radius: 25px;border: 2px solid black;">
+            <h2>Add Number and Choose Operation</h2>
+            <input id="number_1" name="number_1" placeholder="Enter First Number" type="number">
+            <input id="number_2" name="number_2" placeholder="Enter Second Number" type="number">
+            <br> <br>
+            <button onclick="calculateValue('Add')">Add</button>
+            <button onclick="calculateValue('Subtract')">Subtract</button>
+            <button onclick="calculateValue('Multiply')">Multiply</button>
+            <button onclick="calculateValue('Divide')">Divide</button>
+        </div>
+        <div class="column" style="background-color:#888;border: 1px solid black;border-radius: 25px;">
+            <h2>Your Input</h2>
+            <p id="first-num"></p>
+            <p id="second-num"></p>
+            <p id="operation"></p>
+        </div>
+        <div class="column" style="background-color:#888;border: 1px solid black;border-radius: 25px;">
+            <h2>Output</h2>
+            <h4>Total Value: <span id="total_value">0</span></h4>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>Name: Shoval Suissa</p>
+    <p>ID: 313527111</p>
+    <p>Contact Information: 313527111</p>
+</div>
+<script src="calculator.js" type="text/javascript"></script>
+
+</body>
+</html>
